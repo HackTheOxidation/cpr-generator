@@ -20,7 +20,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-cpr-gen = "cpr_generator:main"
+cpr-gen = "cpr_generator:main_generator"
 
 [project.urls]
 "Homepage" = "https://codeberg.org/HackTheOxidation/cpr-generator"

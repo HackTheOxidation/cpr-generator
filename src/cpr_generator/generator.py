@@ -171,3 +171,10 @@ class CPRGenerator:
             return day + month + year + '-' + control_cipher
         else:
             return day + month + year + control_cipher
+
+    def generate_iter(self, n: int, hyphen: bool = False, mod11: bool = True):
+        if n < 0:
+            yield ValueError("Cannot generate a non-positive amount of numbers.")
+
+        for _ in range(n):
+            yield self.generate(hyphen=hyphen, mod11=mod11)
