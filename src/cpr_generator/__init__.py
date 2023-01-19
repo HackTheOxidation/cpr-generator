@@ -1,9 +1,14 @@
 '''
+Module containing utilities for generating, manipulating and verifing
+Danish CPR-numbers.
+
+This includes a HTTP server that generates CPR-numbers on demand.
 '''
 
 import argparse
 
 from .generator import CPRGenerator
+from .server import CPRGeneratorServer
 
 
 def _get_parser():
@@ -30,5 +35,10 @@ def main_generator():
         print(cpr_number)
 
 
+def main_server():
+    server = CPRGeneratorServer()
+    server.run()
+
+
 if __name__ == '__main__':
-    main()
+    main_generator()

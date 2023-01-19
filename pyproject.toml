@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cpr_generator"
-version = "0.0.1"
+version = "0.1.0"
 authors = [
   { name="HackTheOxidation", email="tomas.hagenau@protonmail.ch" },
 ]
@@ -17,10 +17,11 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
-dependencies = []
+dependencies = ['flask', 'markupsafe']
 
 [project.scripts]
 cpr-gen = "cpr_generator:main_generator"
+cpr-gen-server = "cpr_generator:main_server"
 
 [project.urls]
 "Homepage" = "https://codeberg.org/HackTheOxidation/cpr-generator"
