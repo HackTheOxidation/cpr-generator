@@ -48,7 +48,8 @@ class CPRGenerator:
         This number is called "Løbenummer" is Danish.
         '''
         if not (1900 <= year <= 2057):
-            raise ValueError("Year must be between 1900 and 2057 (inclusive).")
+            raise ValueError(
+                f"Year must be between 1900 and 2057 (inclusive), got {year}.")
 
         seven = 0
         eight = 0
@@ -96,10 +97,10 @@ class CPRGenerator:
                 three = month // 10
                 four = month % 10
 
-                year = year % 100
+                y = year % 100
 
-                five = year // 10
-                six = year % 10
+                five = y // 10
+                six = y % 10
 
                 # Calculate the control rest according to specification.
                 rest = sum([
@@ -114,7 +115,7 @@ class CPRGenerator:
                     nine * 2,
                 ]) % 11
 
-            ten = 11 - rest
+            ten = (11 - rest) % 11
             return str(seven) + str(eight) + str(nine) + str(ten)
         else:
             # Modulus 11 doesn't matter so just gimme four random digits.
