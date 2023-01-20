@@ -12,6 +12,8 @@ may contain bugs.
 from datetime import date
 from random import seed, randint, choice
 
+from .cpr_verifier import is_leap_year
+
 __all__ = ['CPRGenerator']
 
 
@@ -23,22 +25,6 @@ class CPRGenerator:
     def __init__(self, rand_seed=None):
         if rand_seed:
             seed(rand_seed)
-
-    def _is_leap_year(self, year: int) -> bool:
-        '''
-        Checks whether a given year is a leap year.
-        '''
-        if year < 0:
-            raise ValueError("Year cannot be negative.")
-
-        if year % 400 == 0:
-            return True
-        if year % 100 == 0:
-            return False
-        if year % 4 == 0:
-            return True
-
-        return False
 
     def _generate_loebenummer(self, year: int) -> tuple[int, int, int]:
         '''
@@ -151,7 +137,7 @@ class CPRGenerator:
             case 4 | 6 | 9 | 11:
                 day = randint(1, 30)
             case 2:
-                if self._is_leap_year(year):
+                if is_leap_year(year):
                     day = randint(1, 29)
                 else:
                     day = randint(1, 28)
