@@ -31,10 +31,11 @@ def is_cpr_number(cpr_number: str) -> bool:
     Checks that the parameter string `cpr_number` has the
     format of a Danish CPR-number: DDMMYY(-)NNNN.
     '''
-    cpr_number = cpr_number.replace('-', '')
 
-    if len(cpr_number) != 10:
+    if not (10 <= len(cpr_number) <= 11):
         return False
+
+    cpr_number = cpr_number.replace('-', '')
 
     try:
         day = int(cpr_number[0:2])
